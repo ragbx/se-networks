@@ -30,3 +30,17 @@
 *.vrb
 *.xdy
 *.tdo
+data/raw/github/
+iPython/se-networks_files/
+latex/report.4ct
+latex/report.4tc
+latex/report.bcf
+latex/report.idv
+latex/report.lg
+latex/report.run.xml
+latex/report.tmp
+latex/report.xref
+lecture/
+notes.md
+research/
+
