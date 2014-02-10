@@ -1,0 +1,2567 @@
+
+
+
+% Header, overrides base
+
+    % Make sure that the sphinx doc style knows who it inherits from.
+    \def\sphinxdocclass{article}
+
+    % Declare the document class
+    \documentclass[letterpaper,10pt,english]{/usr/local/lib/python2.7/dist-packages/sphinx/texinputs/sphinxhowto}
+
+    % Imports
+    \usepackage[utf8]{inputenc}
+    \DeclareUnicodeCharacter{00A0}{\\nobreakspace}
+    \usepackage[T1]{fontenc}
+    \usepackage{babel}
+    \usepackage{times}
+    \usepackage{import}
+    \usepackage[Bjarne]{/usr/local/lib/python2.7/dist-packages/sphinx/texinputs/fncychap}
+    \usepackage{longtable}
+    \usepackage{/usr/local/lib/python2.7/dist-packages/sphinx/texinputs/sphinx}
+    \usepackage{multirow}
+
+    \usepackage{amsmath}
+    \usepackage{amssymb}
+    \usepackage{ucs}
+    \usepackage{enumerate}
+
+    % Used to make the Input/Output rules follow around the contents.
+    \usepackage{needspace}
+
+    % Pygments requirements
+    \usepackage{fancyvrb}
+    \usepackage{color}
+    % ansi colors additions
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{brown}{rgb}{0.54,0.27,0.07}
+    \definecolor{purple}{rgb}{0.5,0.0,0.5}
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+    % Needed to box output/input
+    \usepackage{tikz}
+        \usetikzlibrary{calc,arrows,shadows}
+    \usepackage[framemethod=tikz]{mdframed}
+
+    \usepackage{alltt}
+
+    % Used to load and display graphics
+    \usepackage{graphicx}
+    \graphicspath{ {figs/} }
+    \usepackage[Export]{adjustbox} % To resize
+
+    % used so that images for notebooks which have spaces in the name can still be included
+    \usepackage{grffile}
+
+
+    % For formatting output while also word wrapping.
+    \usepackage{listings}
+    \lstset{breaklines=true}
+    \lstset{basicstyle=\small\ttfamily}
+    \def\smaller{\fontsize{9.5pt}{9.5pt}\selectfont}
+
+    %Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    %Set pygments styles if needed...
+    
+        \definecolor{nbframe-border}{rgb}{0.867,0.867,0.867}
+        \definecolor{nbframe-bg}{rgb}{0.969,0.969,0.969}
+        \definecolor{nbframe-in-prompt}{rgb}{0.0,0.0,0.502}
+        \definecolor{nbframe-out-prompt}{rgb}{0.545,0.0,0.0}
+
+        \newenvironment{ColorVerbatim}
+        {\begin{mdframed}[%
+            roundcorner=1.0pt, %
+            backgroundcolor=nbframe-bg, %
+            userdefinedwidth=1\linewidth, %
+            leftmargin=0.1\linewidth, %
+            innerleftmargin=0pt, %
+            innerrightmargin=0pt, %
+            linecolor=nbframe-border, %
+            linewidth=1pt, %
+            usetwoside=false, %
+            everyline=true, %
+            innerlinewidth=3pt, %
+            innerlinecolor=nbframe-bg, %
+            middlelinewidth=1pt, %
+            middlelinecolor=nbframe-bg, %
+            outerlinewidth=0.5pt, %
+            outerlinecolor=nbframe-border, %
+            needspace=0pt
+        ]}
+        {\end{mdframed}}
+        
+        \newenvironment{InvisibleVerbatim}
+        {\begin{mdframed}[leftmargin=0.1\linewidth,innerleftmargin=3pt,innerrightmargin=3pt, userdefinedwidth=1\linewidth, linewidth=0pt, linecolor=white, usetwoside=false]}
+        {\end{mdframed}}
+
+        \renewenvironment{Verbatim}[1][\unskip]
+        {\begin{alltt}\smaller}
+        {\end{alltt}}
+    
+
+    % Help prevent overflowing lines due to urls and other hard-to-break 
+    % entities.  This doesn't catch everything...
+    \sloppy
+
+    % Document level variables
+    \title{se-networks}
+    \date{February 10, 2014}
+    \release{}
+    \author{Unknown Author}
+    \renewcommand{\releasename}{}
+
+    % TODO: Add option for the user to specify a logo for his/her export.
+    \newcommand{\sphinxlogo}{}
+
+    % Make the index page of the document.
+    \makeindex
+
+    % Import sphinx document type specifics.
+     
+
+
+% Body
+
+    % Start of the document
+    \begin{document}
+
+        
+            \maketitle
+        
+
+        
+
+
+        
+        \section{Bipartite Networks with iPython}
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Author: Stefan Kasberger
+\item
+  Date: February 2014
+\item
+  Course: SE Networks from Prof.~Peter Csermely
+\item
+  \href{https://github.com/skasberger/se-networks}{GitHub} \&
+  \href{http://openscienceasap.org/education/courses/se-networks/}{openscienceASAP}
+\item
+  \href{http://networkx.lanl.gov/reference/algorithms.bipartite.html}{networkx
+  bipartite module}
+\end{itemize}\subsection{Setup and Preprocessing}Import modules
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}78{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{networkx} \PY{k+kn}{as} \PY{n+nn}{nx}
+\PY{k+kn}{from} \PY{n+nn}{networkx.algorithms} \PY{k+kn}{import} \PY{n}{bipartite}
+\PY{k+kn}{from} \PY{n+nn}{networkx.algorithms} \PY{k+kn}{import} \PY{n}{centrality}
+\PY{k+kn}{from} \PY{n+nn}{networkx.algorithms} \PY{k+kn}{import} \PY{n}{distance\PYZus{}measures}
+\PY{k+kn}{from} \PY{n+nn}{networkx.algorithms} \PY{k+kn}{import} \PY{n}{shortest\PYZus{}paths}
+\PY{k+kn}{from} \PY{n+nn}{networkx.algorithms} \PY{k+kn}{import} \PY{n}{components}
+\PY{k+kn}{from} \PY{n+nn}{networkx.algorithms} \PY{k+kn}{import} \PY{n}{isolates}
+\PY{k+kn}{from} \PY{n+nn}{networkx.classes} \PY{k+kn}{import} \PY{n}{function}
+\PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+\PY{k+kn}{import} \PY{n+nn}{math}
+\PY{k+kn}{import} \PY{n+nn}{csv}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+Import config file with your working directory = dir\_se\_networks
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}79{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{config} \PY{k+kn}{import} \PY{o}{*}
+
+\PY{c}{\PYZsh{} CUSTOM WORKING DIRECTORY}
+\PY{c}{\PYZsh{} to add your working directory manually, uncomment the next line and add it instead of \PYZsq{}YOUR/FOLDER\PYZsq{} to your folder}
+\PY{c}{\PYZsh{} dir\PYZus{}se\PYZus{}networks = \PYZsq{}YOUR/FOLDER\PYZsq{}}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+\#\#\# Read in filesRead out the data from the text files. The first column of the text file
+is the ID for the user, the second one is the ID for the Project. Save
+both columns as seperated lists for nodes.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}80{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{users} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+\PY{n}{projects} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+
+\PY{c}{\PYZsh{} read out text file and save every column in a list}
+\PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{dir\PYZus{}se\PYZus{}networks} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{data/raw/github/out.github}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{rb}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{csvfile}\PY{p}{:}
+    \PY{n}{nodes} \PY{o}{=} \PY{n}{csv}\PY{o}{.}\PY{n}{reader}\PY{p}{(}\PY{n}{csvfile}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{ }\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{k}{for} \PY{n}{node} \PY{o+ow}{in} \PY{n}{nodes}\PY{p}{:}
+        \PY{n}{users}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{A}\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n}{node}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+        \PY{n}{projects}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{B}\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n}{node}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\PY{n}{csvfile}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{p}{)}
+
+\PY{c}{\PYZsh{} delete head entries}
+\PY{k}{del} \PY{n}{users}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\PY{k}{del} \PY{n}{projects}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+Read out the data from the text files. The first column is the ID for
+the entitites, the second the ID for the Countries. Save both columns as
+seperated lists for nodes.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}81{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{entities} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+\PY{n}{countries} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+
+\PY{c}{\PYZsh{} read out text file and save every column in a list}
+\PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{dir\PYZus{}se\PYZus{}networks} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{data/raw/dbpedia\PYZhy{}country/out.dbpedia\PYZhy{}country}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{rb}\PY{l+s}{\PYZsq{}}\PY{p}{)} \PY{k}{as} \PY{n}{csvfile}\PY{p}{:}
+    \PY{n}{nodes} \PY{o}{=} \PY{n}{csv}\PY{o}{.}\PY{n}{reader}\PY{p}{(}\PY{n}{csvfile}\PY{p}{,} \PY{n}{delimiter}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{ }\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{k}{for} \PY{n}{node} \PY{o+ow}{in} \PY{n}{nodes}\PY{p}{:}
+        \PY{n}{entities}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{A}\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n}{node}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+        \PY{n}{countries}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{B}\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n}{node}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\PY{n}{csvfile}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{p}{)}
+
+\PY{c}{\PYZsh{} delete head entries}
+\PY{k}{del} \PY{n}{entities}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\PY{k}{del} \PY{n}{countries}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+\subsubsection{Create Graphs}Create graph and add the the user and project lists as nodes to it.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}82{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{B\PYZus{}Github} \PY{o}{=} \PY{n}{nx}\PY{o}{.}\PY{n}{Graph}\PY{p}{(}\PY{p}{)}
+\PY{n}{B\PYZus{}Github}\PY{o}{.}\PY{n}{add\PYZus{}nodes\PYZus{}from}\PY{p}{(}\PY{n}{users}\PY{p}{,} \PY{n}{bipartite}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+\PY{n}{B\PYZus{}Github}\PY{o}{.}\PY{n}{add\PYZus{}nodes\PYZus{}from}\PY{p}{(}\PY{n}{projects}\PY{p}{,} \PY{n}{bipartite}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{k}{print} \PY{n}{nx}\PY{o}{.}\PY{n}{function}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{n}{B\PYZus{}Github}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Name:
+Type: Graph
+Number of nodes: 177386
+Number of edges: 0
+Average degree:   0.0000
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+Create graph and add the the entities and countries lists as nodes to
+it.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}83{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{B\PYZus{}dbpedia} \PY{o}{=} \PY{n}{nx}\PY{o}{.}\PY{n}{Graph}\PY{p}{(}\PY{p}{)}
+\PY{n}{B\PYZus{}dbpedia}\PY{o}{.}\PY{n}{add\PYZus{}nodes\PYZus{}from}\PY{p}{(}\PY{n}{entities}\PY{p}{,} \PY{n}{bipartite}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+\PY{n}{B\PYZus{}dbpedia}\PY{o}{.}\PY{n}{add\PYZus{}nodes\PYZus{}from}\PY{p}{(}\PY{n}{countries}\PY{p}{,} \PY{n}{bipartite}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{k}{print} \PY{n}{nx}\PY{o}{.}\PY{n}{function}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{n}{B\PYZus{}dbpedia}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Name:
+Type: Graph
+Number of nodes: 550522
+Number of edges: 0
+Average degree:   0.0000
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+Create subset for user and project nodes.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}84{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{users\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{n} \PY{k}{for} \PY{n}{n}\PY{p}{,}\PY{n}{d} \PY{o+ow}{in} \PY{n}{B\PYZus{}Github}\PY{o}{.}\PY{n}{nodes}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)} \PY{k}{if} \PY{n}{d}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{bipartite}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{)}
+\PY{n}{projects\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{B\PYZus{}Github}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{users\PYZus{}nodes}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{User: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{users\PYZus{}nodes}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{ and Projects: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{projects\PYZus{}nodes}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}User: 56519 and Projects: 120867
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+Create subset for entities and countries nodes.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}85{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{entities\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{n} \PY{k}{for} \PY{n}{n}\PY{p}{,}\PY{n}{d} \PY{o+ow}{in} \PY{n}{B\PYZus{}dbpedia}\PY{o}{.}\PY{n}{nodes}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)} \PY{k}{if} \PY{n}{d}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{bipartite}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{)}
+\PY{n}{countries\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{B\PYZus{}dbpedia}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{entities\PYZus{}nodes}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Entities: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{entities\PYZus{}nodes}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{ and Countries: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{countries\PYZus{}nodes}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Entities: 548077 and Countries: 2445
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+Create a list of edge tuples and add them as edges to the graph.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}86{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{edge\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+\PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{users}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+    \PY{n}{edge\PYZus{}list}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{n}{user}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{projects}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+
+\PY{n}{B\PYZus{}Github}\PY{o}{.}\PY{n}{add\PYZus{}edges\PYZus{}from}\PY{p}{(}\PY{n}{edge\PYZus{}list}\PY{p}{)}
+\PY{k}{print} \PY{n}{nx}\PY{o}{.}\PY{n}{function}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{n}{B\PYZus{}Github}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Name:
+Type: Graph
+Number of nodes: 177386
+Number of edges: 440237
+Average degree:   4.9636
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}87{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{edge\PYZus{}list} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+\PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{entities}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+    \PY{n}{edge\PYZus{}list}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{n}{entities}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{countries}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+
+\PY{n}{B\PYZus{}dbpedia}\PY{o}{.}\PY{n}{add\PYZus{}edges\PYZus{}from}\PY{p}{(}\PY{n}{edge\PYZus{}list}\PY{p}{)}
+\PY{k}{print} \PY{n}{nx}\PY{o}{.}\PY{n}{function}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{n}{B\PYZus{}dbpedia}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Name:
+Type: Graph
+Number of nodes: 550522
+Number of edges: 584947
+Average degree:   2.1251
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+Check if graph is bipartite
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}88{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{bipartite}\PY{o}{.}\PY{n}{is\PYZus{}bipartite}\PY{p}{(}\PY{n}{B\PYZus{}Github}\PY{p}{)}\PY{p}{)}
+\PY{k}{print}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{bipartite}\PY{o}{.}\PY{n}{is\PYZus{}bipartite}\PY{p}{(}\PY{n}{B\PYZus{}dbpedia}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}True
+True
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+\subsubsection{Check Connectednes}
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}89{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Connected: Github =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{is\PYZus{}connected}\PY{p}{(}\PY{n}{B\PYZus{}Github}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{, dbpedia =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{is\PYZus{}connected}\PY{p}{(}\PY{n}{B\PYZus{}dbpedia}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Connected: Github => False, dbpedia => False
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}90{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Isolation: Github =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{isolates}\PY{p}{(}\PY{n}{B\PYZus{}Github}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{, dbpedia =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{isolates}\PY{p}{(}\PY{n}{B\PYZus{}dbpedia}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Isolation: Github => [], dbpedia => []
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+\subsubsection{Get Connected Components}
+
+Cause the graph is not fully connected, and this is neccessary for
+further analysis, the giant component (largest connected component) gets
+calculated, then the second largest connected Component.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}91{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{GC\PYZus{}Github} \PY{o}{=} \PY{n}{components}\PY{o}{.}\PY{n}{connected\PYZus{}component\PYZus{}subgraphs}\PY{p}{(}\PY{n}{B\PYZus{}Github}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\PY{k}{print} \PY{n}{nx}\PY{o}{.}\PY{n}{function}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{n}{GC\PYZus{}Github}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Name:
+Type: Graph
+Number of nodes: 139752
+Number of edges: 417361
+Average degree:   5.9729
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}92{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{GC\PYZus{}dbpedia} \PY{o}{=} \PY{n}{components}\PY{o}{.}\PY{n}{connected\PYZus{}component\PYZus{}subgraphs}\PY{p}{(}\PY{n}{B\PYZus{}dbpedia}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+\PY{k}{print} \PY{n}{nx}\PY{o}{.}\PY{n}{function}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{n}{GC\PYZus{}dbpedia}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Name:
+Type: Graph
+Number of nodes: 544947
+Number of edges: 580231
+Average degree:   2.1295
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}93{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{GC\PYZus{}users\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{n} \PY{k}{for} \PY{n}{n}\PY{p}{,}\PY{n}{d} \PY{o+ow}{in} \PY{n}{GC\PYZus{}Github}\PY{o}{.}\PY{n}{nodes}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)} \PY{k}{if} \PY{n}{d}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{bipartite}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{)}
+\PY{n}{GC\PYZus{}projects\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{GC\PYZus{}Github}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{GC\PYZus{}users\PYZus{}nodes}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Users: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{GC\PYZus{}users\PYZus{}nodes}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{ and Projects: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{GC\PYZus{}projects\PYZus{}nodes}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Users: 39845 and Projects: 99907
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}94{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{GC\PYZus{}entities\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{n} \PY{k}{for} \PY{n}{n}\PY{p}{,}\PY{n}{d} \PY{o+ow}{in} \PY{n}{GC\PYZus{}dbpedia}\PY{o}{.}\PY{n}{nodes}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)} \PY{k}{if} \PY{n}{d}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{bipartite}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{)}
+\PY{n}{GC\PYZus{}countries\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{GC\PYZus{}dbpedia}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{GC\PYZus{}entities\PYZus{}nodes}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Entities: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{GC\PYZus{}entities\PYZus{}nodes}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{ and Countries: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{GC\PYZus{}countries\PYZus{}nodes}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Entities: 543589 and Countries: 1358
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}95{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{LCC2\PYZus{}Github} \PY{o}{=} \PY{n}{components}\PY{o}{.}\PY{n}{connected\PYZus{}component\PYZus{}subgraphs}\PY{p}{(}\PY{n}{B\PYZus{}Github}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+\PY{k}{print} \PY{n}{nx}\PY{o}{.}\PY{n}{function}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Name:
+Type: Graph
+Number of nodes: 45
+Number of edges: 44
+Average degree:   1.9556
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}96{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{LCC2\PYZus{}dbpedia} \PY{o}{=} \PY{n}{components}\PY{o}{.}\PY{n}{connected\PYZus{}component\PYZus{}subgraphs}\PY{p}{(}\PY{n}{B\PYZus{}dbpedia}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+\PY{k}{print} \PY{n}{nx}\PY{o}{.}\PY{n}{function}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Name:
+Type: Graph
+Number of nodes: 338
+Number of edges: 337
+Average degree:   1.9941
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}118{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{LCC2\PYZus{}users\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{n} \PY{k}{for} \PY{n}{n}\PY{p}{,}\PY{n}{d} \PY{o+ow}{in} \PY{n}{LCC2\PYZus{}Github}\PY{o}{.}\PY{n}{nodes}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)} \PY{k}{if} \PY{n}{d}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{bipartite}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{)}
+\PY{n}{LCC2\PYZus{}projects\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{LCC2\PYZus{}users\PYZus{}nodes}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{User: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{LCC2\PYZus{}users\PYZus{}nodes}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{ and Projects: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{LCC2\PYZus{}projects\PYZus{}nodes}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}User: 3 and Projects: 42
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}98{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{LCC2\PYZus{}entities\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{n} \PY{k}{for} \PY{n}{n}\PY{p}{,}\PY{n}{d} \PY{o+ow}{in} \PY{n}{LCC2\PYZus{}dbpedia}\PY{o}{.}\PY{n}{nodes}\PY{p}{(}\PY{n}{data}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)} \PY{k}{if} \PY{n}{d}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{bipartite}\PY{l+s}{\PYZsq{}}\PY{p}{]}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{)}
+\PY{n}{LCC2\PYZus{}countries\PYZus{}nodes} \PY{o}{=} \PY{n+nb}{set}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{LCC2\PYZus{}entities\PYZus{}nodes}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Entities: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{LCC2\PYZus{}entities\PYZus{}nodes}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{ and Countries: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{LCC2\PYZus{}countries\PYZus{}nodes}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Entities: 337 and Countries: 1
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+\textbf{\emph{Check Connectednes of Giant Component}}
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}99{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Connected, Giant Component: Github =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{is\PYZus{}connected}\PY{p}{(}\PY{n}{GC\PYZus{}Github}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{, dbpedia =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{is\PYZus{}connected}\PY{p}{(}\PY{n}{GC\PYZus{}dbpedia}\PY{p}{)}\PY{p}{)}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Connected, 2nd largest Connected Component: Github =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{is\PYZus{}connected}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{, dbpedia =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{is\PYZus{}connected}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Connected, Giant Component: Github => True, dbpedia => True
+Connected, 2nd largest Connected Component: Github => True, dbpedia =>
+True
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}100{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Isolation: Github =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{isolates}\PY{p}{(}\PY{n}{GC\PYZus{}Github}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{, dbpedia =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{isolates}\PY{p}{(}\PY{n}{GC\PYZus{}dbpedia}\PY{p}{)}\PY{p}{)}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Isolation Reduced: Github =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{isolates}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{, dbpedia =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{isolates}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Isolation: Github => [], dbpedia => []
+Isolation Reduced: Github => [], dbpedia => []
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+\subsubsection{Weighted Projection}
+
+\textbf{\emph{This can not be done cause of too expensive computation
+costs.}}
+
+\href{http://networkx.lanl.gov/reference/generated/networkx.algorithms.centrality.degree_centrality.html\#networkx.algorithms.centrality.degree_centrality}{Weighted
+projection} to user-user unipartite network.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}115{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} P\PYZus{}Github = nx.bipartite.weighted\PYZus{}projected\PYZus{}graph(GC\PYZus{}Github, GC\PYZus{}user\PYZus{}nodes, ratio=False)}
+\PY{c}{\PYZsh{} print nx.classes.function.info(P\PYZus{}Github)}
+
+\PY{c}{\PYZsh{} LCC2}
+\PY{n}{P\PYZus{}Github\PYZus{}LCC2} \PY{o}{=} \PY{n}{nx}\PY{o}{.}\PY{n}{bipartite}\PY{o}{.}\PY{n}{weighted\PYZus{}projected\PYZus{}graph}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{,} \PY{n}{LCC2\PYZus{}user\PYZus{}nodes}\PY{p}{,} \PY{n}{ratio}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}
+\PY{k}{print} \PY{n}{nx}\PY{o}{.}\PY{n}{classes}\PY{o}{.}\PY{n}{function}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{n}{P\PYZus{}Github\PYZus{}LCC2}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Name:
+Type: Graph
+Number of nodes: 3
+Number of edges: 3
+Average degree:   2.0000
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+Weighted projection to entitie-entitie unipartite network.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}116{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} P\PYZus{}dbpedia = bipartite.weighted\PYZus{}projected\PYZus{}graph(GC\PYZus{}dbpedia\PYZus{}red, entities\PYZus{}nodes\PYZus{}red, ratio=False)}
+\PY{c}{\PYZsh{} print function.info(P\PYZus{}dbpedia)}
+
+\PY{c}{\PYZsh{} LCC2}
+\PY{n}{P\PYZus{}dbpedia\PYZus{}LCC2} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{weighted\PYZus{}projected\PYZus{}graph}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{,} \PY{n}{LCC2\PYZus{}entities\PYZus{}nodes}\PY{p}{,} \PY{n}{ratio}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}
+\PY{k}{print} \PY{n}{function}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{n}{P\PYZus{}dbpedia\PYZus{}LCC2}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Name:
+Type: Graph
+Number of nodes: 337
+Number of edges: 56616
+Average degree: 336.0000
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+\subsection{Analysis}\subsubsection{Degree Centrality}
+
+Calculate the
+\href{http://networkx.lanl.gov/reference/generated/networkx.algorithms.bipartite.centrality.degree_centrality.html\#networkx.algorithms.bipartite.centrality.degree_centrality}{Degree
+Centrality}.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}76{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{DC\PYZus{}Github} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{degree\PYZus{}centrality}\PY{p}{(}\PY{n}{GC\PYZus{}Github}\PY{p}{,} \PY{n}{users\PYZus{}nodes}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}77{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{DC\PYZus{}dbpedia} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{degree\PYZus{}centrality}\PY{p}{(}\PY{n}{GC\PYZus{}dbpedia}\PY{p}{,} \PY{n}{entities\PYZus{}nodes}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+\subsubsection{Betweeness Centralitiy}
+
+Calculate
+\href{http://networkx.lanl.gov/reference/generated/networkx.algorithms.bipartite.centrality.betweenness_centrality.html\#networkx.algorithms.bipartite.centrality.betweenness_centrality}{Betwenness
+Centrality}
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}120{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} BC\PYZus{}Github = bipartite.betweenness\PYZus{}centrality(GC\PYZus{}Github, GC\PYZus{}users\PYZus{}nodes)}
+
+\PY{c}{\PYZsh{} LCC2}
+\PY{n}{LCC2\PYZus{}BC\PYZus{}Github} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{betweenness\PYZus{}centrality}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{,} \PY{n}{LCC2\PYZus{}users\PYZus{}nodes}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}127{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} BC\PYZus{}dbpedia = bipartite.betweenness\PYZus{}centrality(GC\PYZus{}dbpedia, GC\PYZus{}entities\PYZus{}nodes)}
+
+\PY{c}{\PYZsh{} LCC2 =\PYZgt{} ZeroDivisionError: float division by zero}
+\PY{c}{\PYZsh{} LCC2\PYZus{}BC\PYZus{}dbpedia = bipartite.betweenness\PYZus{}centrality(LCC2\PYZus{}dbpedia, LCC2\PYZus{}entities\PYZus{}nodes)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                
+            \begin{alltt}
+
+        --------------------------------------------------------------
+-------------
+    ZeroDivisionError                         Traceback (most recent
+call last)
+
+
+
+        <ipython-input-127-c5cc5e0e64ab> in <module>()
+          3
+          4 \# LCC2 => ERROR
+    ----> 5 LCC2\_BC\_dbpedia =
+bipartite.betweenness\_centrality(LCC2\_dbpedia, LCC2\_entities\_nodes)
+
+
+
+
+        /usr/local/lib/python2.7/dist-
+packages/networkx/algorithms/bipartite/centrality.pyc in
+betweenness\_centrality(G, nodes)
+        164                                             weight=None)
+        165     for node in top:
+    --> 166         betweenness[node]/=bet\_max\_top
+        167     for node in bottom:
+        168         betweenness[node]/=bet\_max\_bot
+
+
+
+
+        ZeroDivisionError: float division by zero
+
+\end{alltt}
+        
+            
+        
+    
+\subsubsection{Closeness Centrality}
+
+Calculate
+\href{http://networkx.lanl.gov/reference/generated/networkx.algorithms.bipartite.centrality.closeness_centrality.html\#networkx.algorithms.bipartite.centrality.closeness_centrality}{Closeness
+Centrality}
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}130{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} GC\PYZus{}CC\PYZus{}Github = nx.algorithms.closeness\PYZus{}centrality(GC\PYZus{}Github, GC\PYZus{}users\PYZus{}nodes)}
+
+\PY{c}{\PYZsh{} LCC2 =\PYZgt{} TypeError: unhashable type: \PYZsq{}set\PYZsq{}}
+\PY{c}{\PYZsh{} LCC2\PYZus{}CC\PYZus{}Github = nx.algorithms.closeness\PYZus{}centrality(LCC2\PYZus{}Github, LCC2\PYZus{}users\PYZus{}nodes)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}129{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} GC\PYZus{}CC\PYZus{}dbpedia = nx.algorithms.closeness\PYZus{}centrality(GC\PYZus{}dbpedia, GC\PYZus{}entities\PYZus{}nodes)}
+
+\PY{c}{\PYZsh{} LCC2 =\PYZgt{} TypeError: unhashable type: \PYZsq{}set\PYZsq{}}
+\PY{c}{\PYZsh{} LCC2\PYZus{}CC\PYZus{}dbpedia = nx.algorithms.closeness\PYZus{}centrality(LCC2\PYZus{}dbpedia, LCC2\PYZus{}entities\PYZus{}nodes)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+\subsubsection{Shortest Paths}
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}132{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} GC\PYZus{}SP\PYZus{}Github = shortest\PYZus{}paths.shortest\PYZus{}path\PYZus{}length(GC\PYZus{}Github)}
+\PY{c}{\PYZsh{} GC\PYZus{}SP\PYZus{}dbpedia = shortest\PYZus{}paths.shortest\PYZus{}path\PYZus{}length(GC\PYZus{}dbpedia)}
+
+\PY{c}{\PYZsh{} LCC2}
+\PY{n}{LCC2\PYZus{}SP\PYZus{}Github} \PY{o}{=} \PY{n}{shortest\PYZus{}paths}\PY{o}{.}\PY{n}{shortest\PYZus{}path\PYZus{}length}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{)}
+\PY{n}{LCC2\PYZus{}SP\PYZus{}dbpedia} \PY{o}{=} \PY{n}{shortest\PYZus{}paths}\PY{o}{.}\PY{n}{shortest\PYZus{}path\PYZus{}length}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}134{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} GC\PYZus{}ASP\PYZus{}Github = shortest\PYZus{}paths.average\PYZus{}shortest\PYZus{}path\PYZus{}length(GC\PYZus{}Github)}
+\PY{c}{\PYZsh{} print \PYZsq{}Avg. Shortest Path Github: \PYZsq{} + str(GC\PYZus{}ASP\PYZus{}Github)}
+
+\PY{c}{\PYZsh{} LCC2}
+\PY{n}{LCC2\PYZus{}ASP\PYZus{}Github} \PY{o}{=} \PY{n}{shortest\PYZus{}paths}\PY{o}{.}\PY{n}{average\PYZus{}shortest\PYZus{}path\PYZus{}length}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{)}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Avg. Shortest Path Github: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{LCC2\PYZus{}ASP\PYZus{}Github}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Avg. Shortest Path Github: 2.11919191919
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}135{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} GC\PYZus{}ASP\PYZus{}dbpedia = shortest\PYZus{}paths.average\PYZus{}shortest\PYZus{}path\PYZus{}length(GC\PYZus{}dbpedia)}
+\PY{c}{\PYZsh{} print \PYZsq{}Avg. Shortest Path Github: \PYZsq{} + str(GC\PYZus{}ASP\PYZus{}dbpedia)}
+
+\PY{c}{\PYZsh{} LCC2}
+\PY{n}{LCC2\PYZus{}ASP\PYZus{}dbpedia} \PY{o}{=} \PY{n}{shortest\PYZus{}paths}\PY{o}{.}\PY{n}{average\PYZus{}shortest\PYZus{}path\PYZus{}length}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{)}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Avg. Shortest Path Github: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{LCC2\PYZus{}ASP\PYZus{}dbpedia}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Avg. Shortest Path Github: 1.99408284024
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+\subsubsection{Clustering}
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}161{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} GC\PYZus{}CC\PYZus{}Github = bipartite.cluster.clustering(B\PYZus{}Github, users\PYZus{}nodes)}
+
+\PY{c}{\PYZsh{} LCC2}
+\PY{n}{LCC2\PYZus{}CC\PYZus{}Github} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{)}
+\PY{n}{LCC2\PYZus{}CC\PYZus{}Github\PYZus{}users} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{,} \PY{n}{LCC2\PYZus{}users\PYZus{}nodes}\PY{p}{)}
+\PY{n}{LCC2\PYZus{}CC\PYZus{}Github\PYZus{}projects} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{,} \PY{n}{LCC2\PYZus{}projects\PYZus{}nodes}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}163{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} GC\PYZus{}CC\PYZus{}dbpedia = bipartite.cluster.clustering(B\PYZus{}dbpedia, entities\PYZus{}nodes)}
+
+\PY{c}{\PYZsh{} LCC2}
+\PY{n}{LCC2\PYZus{}CC\PYZus{}dbpedia} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{,} \PY{n}{LCC2\PYZus{}entities\PYZus{}nodes}\PY{p}{)}
+\PY{n}{LCC2\PYZus{}CC\PYZus{}dbpedia\PYZus{}entities} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{,} \PY{n}{LCC2\PYZus{}entities\PYZus{}nodes}\PY{p}{)}
+\PY{n}{LCC2\PYZus{}CC\PYZus{}dbpedia\PYZus{}countries} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{,} \PY{n}{LCC2\PYZus{}countries\PYZus{}nodes}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+\textbf{\emph{Average Clustering Coefficient}}
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}194{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} GC\PYZus{}ACC\PYZus{}Github = bipartite.cluster.average\PYZus{}clustering(B\PYZus{}Github, users\PYZus{}nodes)}
+
+\PY{c}{\PYZsh{} LCC2}
+\PY{n}{LCC2\PYZus{}ACC\PYZus{}Github} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{average\PYZus{}clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{)}
+\PY{n}{LCC2\PYZus{}ACC\PYZus{}Github\PYZus{}users} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{average\PYZus{}clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{,} \PY{n}{LCC2\PYZus{}users\PYZus{}nodes}\PY{p}{)}
+\PY{n}{LCC2\PYZus{}ACC\PYZus{}Github\PYZus{}projects} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{average\PYZus{}clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{,} \PY{n}{LCC2\PYZus{}projects\PYZus{}nodes}\PY{p}{)}
+\PY{n}{ACC\PYZus{}P\PYZus{}Github\PYZus{}LCC2} \PY{o}{=} \PY{n}{nx}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{average\PYZus{}clustering}\PY{p}{(}\PY{n}{P\PYZus{}Github\PYZus{}LCC2}\PY{p}{)}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Github Avg. Clustering Coefficient LCC2}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Overall: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{LCC2\PYZus{}ACC\PYZus{}Github}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Projection =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{ACC\PYZus{}P\PYZus{}Github\PYZus{}LCC2}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Users =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{LCC2\PYZus{}ACC\PYZus{}Github\PYZus{}users}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Projects =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{LCC2\PYZus{}ACC\PYZus{}Github\PYZus{}projects}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Github Avg. Clustering Coefficient LCC2
+Overall: 0.901071105949
+Projection => 1.0
+Users => 0.182733255904
+Projects => 0.952380952381
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}196{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} GC}
+\PY{c}{\PYZsh{} GC\PYZus{}ACC\PYZus{}dbpedia = bipartite.cluster.average\PYZus{}clustering(B\PYZus{}dbpedia, entities\PYZus{}nodes)}
+
+\PY{c}{\PYZsh{} LCC2}
+\PY{n}{LCC2\PYZus{}ACC\PYZus{}dbpedia} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{average\PYZus{}clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{)}
+\PY{n}{LCC2\PYZus{}ACC\PYZus{}dbpedia\PYZus{}entities} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{average\PYZus{}clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{,} \PY{n}{LCC2\PYZus{}entities\PYZus{}nodes}\PY{p}{)}
+\PY{n}{LCC2\PYZus{}ACC\PYZus{}dbpedia\PYZus{}countries} \PY{o}{=} \PY{n}{bipartite}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{average\PYZus{}clustering}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{,} \PY{n}{LCC2\PYZus{}countries\PYZus{}nodes}\PY{p}{)}
+\PY{n}{ACC\PYZus{}P\PYZus{}dbpedia\PYZus{}LCC2} \PY{o}{=} \PY{n}{nx}\PY{o}{.}\PY{n}{cluster}\PY{o}{.}\PY{n}{average\PYZus{}clustering}\PY{p}{(}\PY{n}{P\PYZus{}dbpedia\PYZus{}LCC2}\PY{p}{)}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{dbpedia Avg. Clustering Coefficient LCC2}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Overall: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{LCC2\PYZus{}ACC\PYZus{}dbpedia}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Projection =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{ACC\PYZus{}P\PYZus{}dbpedia\PYZus{}LCC2}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Entities =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{LCC2\PYZus{}ACC\PYZus{}dbpedia\PYZus{}entities}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Countries =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{LCC2\PYZus{}ACC\PYZus{}dbpedia\PYZus{}countries}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}dbpedia Avg. Clustering Coefficient LCC2
+Overall: 0.997041420118
+Projection => 1.0
+Entities => 1.0
+Countries => 0.0
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+\subsubsection{Density}
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}101{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Density Github: User =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{bipartite}\PY{o}{.}\PY{n}{density}\PY{p}{(}\PY{n}{B\PYZus{}Github}\PY{p}{,} \PY{n}{user}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{ Projects =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{bipartite}\PY{o}{.}\PY{n}{density}\PY{p}{(}\PY{n}{B\PYZus{}Github}\PY{p}{,} \PY{n}{projects}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Density Github: User => -3.80443673412e-06 Projects =>
+-3.80443673412e-06
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}34{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Density dbpedia: Entities =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{bipartite}\PY{o}{.}\PY{n}{density}\PY{p}{(}\PY{n}{B\PYZus{}dbpedia}\PY{p}{,} \PY{n}{entities}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{ Countries =\PYZgt{} }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{nx}\PY{o}{.}\PY{n}{bipartite}\PY{o}{.}\PY{n}{density}\PY{p}{(}\PY{n}{B\PYZus{}dbpedia}\PY{p}{,} \PY{n}{countries}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Density dbpedia: Entities => -2.12714710275e-05 Countries =>
+-2.12714710275e-05
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+\subsubsection{Diameter}
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}145{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} DURATION}
+\PY{n}{Diam\PYZus{}Github} \PY{o}{=} \PY{n}{nx}\PY{o}{.}\PY{n}{algorithms}\PY{o}{.}\PY{n}{distance\PYZus{}measures}\PY{o}{.}\PY{n}{diameter}\PY{p}{(}\PY{n}{LCC2\PYZus{}Github}\PY{p}{)}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Diameter Github: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{Diam\PYZus{}Github}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Diameter Github: 4
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}146{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{c}{\PYZsh{} DURATION}
+\PY{n}{Diam\PYZus{}dbpedia} \PY{o}{=} \PY{n}{nx}\PY{o}{.}\PY{n}{algorithms}\PY{o}{.}\PY{n}{distance\PYZus{}measures}\PY{o}{.}\PY{n}{diameter}\PY{p}{(}\PY{n}{LCC2\PYZus{}dbpedia}\PY{p}{)}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Diameter dbpedia: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{Diam\PYZus{}dbpedia}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Diameter dbpedia: 2
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+\subsection{Plot Diagrams}
+
+\href{http://matplotlib.org/api/pyplot_api.html}{matplotlib}\subsubsection{Degree}\href{http://networkx.github.io/documentation/latest/reference/generated/networkx.classes.function.degree_histogram.html\#networkx.classes.function.degree_histogram}{Degree
+Histogram} returns a list of the frequency of each degree value.
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}105{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{DegFreq\PYZus{}Github} \PY{o}{=} \PY{n}{function}\PY{o}{.}\PY{n}{degree\PYZus{}histogram}\PY{p}{(}\PY{n}{B\PYZus{}Github}\PY{p}{)}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Degree Frequency}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Length: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{DegFreq\PYZus{}Github}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{Highest Frequency: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{DegFreq\PYZus{}Github}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Length: 3676
+Highest Frequency: 106430
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}186{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{\PYZpc{}}\PY{k}{matplotlib} \PY{n}{inline}
+\PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{DegFreq\PYZus{}Github}\PY{p}{,} \PY{n}{bins} \PY{o}{=} \PY{l+m+mi}{40}\PY{p}{,} \PY{n+nb}{range} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{)}\PY{p}{,} \PY{n}{log}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Degree}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Frequency}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{GitHub Degree Frequency}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{n}{dir\PYZus{}se\PYZus{}networks} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{figures/github\PYZus{}degfreq\PYZus{}hist.png}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+    \begin{center}
+    \includegraphics[max size={\textwidth}{\textheight}]{se-networks_files/se-networks_74_0.png}
+    \par
+    \end{center}
+    
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}107{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{DegFreq\PYZus{}dbpedia} \PY{o}{=} \PY{n}{function}\PY{o}{.}\PY{n}{degree\PYZus{}histogram}\PY{p}{(}\PY{n}{B\PYZus{}dbpedia}\PY{p}{)}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Degree Frequency}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Length: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{DegFreq\PYZus{}dbpedia}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{Highest Frequency: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{DegFreq\PYZus{}dbpedia}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Length: 108686
+Highest Frequency: 521213
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}113{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{\PYZpc{}}\PY{k}{matplotlib} \PY{n}{inline}
+\PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{DegFreq\PYZus{}dbpedia}\PY{p}{,} \PY{n}{bins} \PY{o}{=} \PY{l+m+mi}{40}\PY{p}{,} \PY{n+nb}{range} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{40}\PY{p}{)}\PY{p}{,} \PY{n}{log}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Degree}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Frequency}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{dbpedia Degree Frequency}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{n}{dir\PYZus{}se\PYZus{}networks} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{figures/dbpedia\PYZus{}degfreq\PYZus{}hist.png}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+    \begin{center}
+    \includegraphics[max size={\textwidth}{\textheight}]{se-networks_files/se-networks_76_0.png}
+    \par
+    \end{center}
+    
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}188{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{P\PYZus{}DegFreq\PYZus{}dbpedia} \PY{o}{=} \PY{n}{function}\PY{o}{.}\PY{n}{degree\PYZus{}histogram}\PY{p}{(}\PY{n}{P\PYZus{}dbpedia\PYZus{}LCC2}\PY{p}{)}
+\PY{k}{print} \PY{l+s}{\PYZsq{}}\PY{l+s}{Projected dbpedia Degree Frequency }\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{Length: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{P\PYZus{}DegFreq\PYZus{}dbpedia}\PY{p}{)}\PY{p}{)} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{Highest Frequency: }\PY{l+s}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{P\PYZus{}DegFreq\PYZus{}dbpedia}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+\begin{alltt}Projected dbpedia Degree Frequency
+Length: 337
+Highest Frequency: 0
+\end{alltt}
+
+            \end{InvisibleVerbatim}
+            
+        
+    
+\subsubsection{Shortest Path Length}
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}184{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{\PYZpc{}}\PY{k}{matplotlib} \PY{n}{inline}
+\PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{LCC2\PYZus{}SP\PYZus{}Github}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{bins} \PY{o}{=} \PY{l+m+mi}{5}\PY{p}{,} \PY{n+nb}{range} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Shortest paths}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Frequency}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{n}{ymax}\PY{o}{=}\PY{l+m+mf}{0.0000000001}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{GitHub LCC2 Shortest Paths}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{n}{dir\PYZus{}se\PYZus{}networks} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{figures/Github\PYZus{}LCC2\PYZus{}ShortPath\PYZus{}hist.png}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+    \begin{center}
+    \includegraphics[max size={\textwidth}{\textheight}]{se-networks_files/se-networks_79_0.png}
+    \par
+    \end{center}
+    
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}179{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{\PYZpc{}}\PY{k}{matplotlib} \PY{n}{inline}
+\PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{LCC2\PYZus{}SP\PYZus{}dbpedia}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{bins} \PY{o}{=} \PY{l+m+mi}{5}\PY{p}{,} \PY{n+nb}{range} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Shortest paths}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Frequency}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{n}{ymax}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{dbpedia LCC2 Shortest Paths}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{n}{dir\PYZus{}se\PYZus{}networks} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{figures/dbpedia\PYZus{}LCC2\PYZus{}ShortPath\PYZus{}hist.png}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+    \begin{center}
+    \includegraphics[max size={\textwidth}{\textheight}]{se-networks_files/se-networks_80_0.png}
+    \par
+    \end{center}
+    
+            \end{InvisibleVerbatim}
+            
+        
+    
+\subsubsection{Clustering}
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}180{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{\PYZpc{}}\PY{k}{matplotlib} \PY{n}{inline}
+\PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{LCC2\PYZus{}CC\PYZus{}Github}\PY{p}{,} \PY{n}{bins} \PY{o}{=} \PY{l+m+mi}{5}\PY{p}{,} \PY{n+nb}{range} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Clustering Coefficient}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Frequency}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Github LCC2 Clustering Coefficient}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{n}{dir\PYZus{}se\PYZus{}networks} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{figures/Github\PYZus{}ClustCoeff\PYZus{}hist.png}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                
+            \begin{alltt}
+
+        --------------------------------------------------------------
+-------------
+    KeyError                                  Traceback (most recent
+call last)
+
+
+
+        <ipython-input-180-438117286b5d> in <module>()
+          1 get\_ipython().magic(u'matplotlib inline')
+    ----> 2 plt.hist(LCC2\_CC\_Github, bins = 5, range = (0, 5))
+          3 plt.xlabel('Clustering Coefficient')
+          4 plt.ylabel('Frequency')
+          5 plt.title('Github LCC2 Clustering Coefficient')
+
+
+
+
+        /usr/lib/pymodules/python2.7/matplotlib/pyplot.pyc in hist(x,
+bins, range, normed, weights, cumulative, bottom, histtype, align,
+orientation, rwidth, log, color, label, stacked, hold, **kwargs)
+       2670                       histtype=histtype, align=align,
+orientation=orientation,
+       2671                       rwidth=rwidth, log=log, color=color,
+label=label,
+    -> 2672                       stacked=stacked, **kwargs)
+       2673         draw\_if\_interactive()
+       2674     finally:
+
+
+
+
+        /usr/lib/pymodules/python2.7/matplotlib/axes.pyc in hist(self,
+x, bins, range, normed, weights, cumulative, bottom, histtype, align,
+orientation, rwidth, log, color, label, stacked, **kwargs)
+       8024         \# Massage 'x' for processing.
+       8025         \# NOTE: Be sure any changes here is also done
+below to 'weights'
+    -> 8026         if isinstance(x, np.ndarray) or not
+iterable(x[0]):
+       8027             \# TODO: support masked arrays;
+       8028             x = np.asarray(x)
+
+
+
+
+        KeyError: 0
+
+\end{alltt}
+        
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+    \begin{center}
+    \includegraphics[max size={\textwidth}{\textheight}]{se-networks_files/se-networks_82_1.png}
+    \par
+    \end{center}
+    
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}181{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+\PY{o}{\PYZpc{}}\PY{k}{matplotlib} \PY{n}{inline}
+\PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{LCC2\PYZus{}CC\PYZus{}dbpedia}\PY{p}{,} \PY{n}{bins} \PY{o}{=} \PY{l+m+mi}{5}\PY{p}{,} \PY{n+nb}{range} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Clustering Coefficient}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Frequency}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{dbpedia LCC2 Clustering Coefficient}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{n}{plt}\PY{o}{.}\PY{n}{savefig}\PY{p}{(}\PY{n}{dir\PYZus{}se\PYZus{}networks} \PY{o}{+} \PY{l+s}{\PYZsq{}}\PY{l+s}{figures/dbpedia\PYZus{}ClustCoeff\PYZus{}hist.png}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\PY{c}{\PYZsh{} LCC2\PYZus{}CC\PYZus{}dbpedia\PYZus{}entities}
+\PY{c}{\PYZsh{} LCC2\PYZus{}CC\PYZus{}dbpedia\PYZus{}countries}
+\end{Verbatim}
+
+            
+                \vspace{-0.2\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+    
+
+        % If the first block is an image, minipage the image.  Else
+        % request a certain amount of space for the input text.
+        \needspace{4\baselineskip}
+        
+        
+
+            % Add document contents.
+            
+                
+            \begin{alltt}
+
+        --------------------------------------------------------------
+-------------
+    KeyError                                  Traceback (most recent
+call last)
+
+
+
+        <ipython-input-181-40fb69c614fc> in <module>()
+          1 get\_ipython().magic(u'matplotlib inline')
+    ----> 2 plt.hist(LCC2\_CC\_dbpedia, bins = 5, range = (0, 5))
+          3 plt.xlabel('Clustering Coefficient')
+          4 plt.ylabel('Frequency')
+          5 plt.title('dbpedia LCC2 Clustering Coefficient')
+
+
+
+
+        /usr/lib/pymodules/python2.7/matplotlib/pyplot.pyc in hist(x,
+bins, range, normed, weights, cumulative, bottom, histtype, align,
+orientation, rwidth, log, color, label, stacked, hold, **kwargs)
+       2670                       histtype=histtype, align=align,
+orientation=orientation,
+       2671                       rwidth=rwidth, log=log, color=color,
+label=label,
+    -> 2672                       stacked=stacked, **kwargs)
+       2673         draw\_if\_interactive()
+       2674     finally:
+
+
+
+
+        /usr/lib/pymodules/python2.7/matplotlib/axes.pyc in hist(self,
+x, bins, range, normed, weights, cumulative, bottom, histtype, align,
+orientation, rwidth, log, color, label, stacked, **kwargs)
+       8024         \# Massage 'x' for processing.
+       8025         \# NOTE: Be sure any changes here is also done
+below to 'weights'
+    -> 8026         if isinstance(x, np.ndarray) or not
+iterable(x[0]):
+       8027             \# TODO: support masked arrays;
+       8028             x = np.asarray(x)
+
+
+
+
+        KeyError: 0
+
+\end{alltt}
+        
+            
+                \begin{InvisibleVerbatim}
+                \vspace{-0.5\baselineskip}
+    \begin{center}
+    \includegraphics[max size={\textwidth}{\textheight}]{se-networks_files/se-networks_83_1.png}
+    \par
+    \end{center}
+    
+            \end{InvisibleVerbatim}
+            
+        
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+
+\end{Verbatim}
+
+            
+                \vspace{0.3\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+
+\end{Verbatim}
+
+            
+                \vspace{0.3\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+
+\end{Verbatim}
+
+            
+                \vspace{0.3\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+
+    % Make sure that atleast 4 lines are below the HR
+    \needspace{4\baselineskip}
+
+    
+        \vspace{6pt}
+        \makebox[0.1\linewidth]{\smaller\hfill\tt\color{nbframe-in-prompt}In\hspace{4pt}{[}{]}:\hspace{4pt}}\\*
+        \vspace{-2.65\baselineskip}
+        \begin{ColorVerbatim}
+            \vspace{-0.7\baselineskip}
+            \begin{Verbatim}[commandchars=\\\{\}]
+
+\end{Verbatim}
+
+            
+                \vspace{0.3\baselineskip}
+            
+        \end{ColorVerbatim}
+    
+
+        
+
+        \renewcommand{\indexname}{Index}
+        \printindex
+
+    % End of document
+    \end{document}
+
+
